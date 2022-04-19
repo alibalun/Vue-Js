@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vue js 3</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ali B.">
+    <meta name="description" content="">
+    <!-- Vue js cdn -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- Pure CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container mt-2">
+            <h3 class="offset-5">Todo List</h3>
+            <div class="container d-flex">
+                <input type="text" class="col-12" v-model="text" @keydown.enter="addItem($event)">
+                <button class="btn btn-success" @click="addItem($event)">Add</button>
+            </div>
+            <div class="container">
+                <ul class="list-group">
+                    <li v-for="todo in todoList"
+                        class="list-group-item d-flex justify-content-between align-items-center" v-bind:class="{green: todo.isCheck}">
+                        <div style="transition:all .3s;" class="check fa-check fa-solid" v-bind:class="{'fill': todo.isCheck}" @click="countItem(todo)"></div>
+                        <div class="mt-2" v-bind:style="{cursor: 'pointer'}" v-bind:class="{del: todo.isClick}"
+                            @click="countCompleted(todo)" v-bind:style="cursor:pointer;">{{ todo.text }}</div>
+                        <button class="btn btn-sm btn-dark" @click="removeItem(todo)">Remove</button>
+                    </li>
+                </ul>
+                <div style="font-size:14px;line-height:8px;flex-direction: column;" class="d-flex mt-4">
+                    <p class="font-weight-bold">Yapılacaklar: {{willBe}}</p>
+                    <p class="font-weight-bold text-success">Aktif Yapılacaklar: {{activeWillBe}}</p>
+                    <p class="font-weight-bold text-danger">Tamamlananlar: {{completedItem}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

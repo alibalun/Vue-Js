@@ -1,0 +1,10 @@
+.green{
+    background-color: green;
+    color:white;
+    transition: all .3s;
+}
+.del{
+    text-decoration: line-through;
+    font-weight:bold;
+    color:red;
+}
